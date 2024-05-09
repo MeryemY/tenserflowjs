@@ -3,7 +3,7 @@ let objectDetectionModel = null;
 const inputImage = document.querySelector("#inputImage");
 const detectButton = document.querySelector("#detectButton");
 const resultDiv = document.querySelector("#result");
-inputImage.crossOrigin = "Anonymous";
+inputImage.crossOrigin = "Anonymous"; //anonim olarak tanımlar. kullanıcı kimliğini göndermemesini sağlar.
 
 detectButton.addEventListener("click", async () => {
     if (!objectDetectionModel) {
@@ -11,8 +11,8 @@ detectButton.addEventListener("click", async () => {
         return;
     }
 
-    objectDetectionModel.detect(inputImage).then(predictions => {
-        console.log('Predictions: ', predictions);
+    objectDetectionModel.detect(inputImage).then(predictions => { //resimdeki nesne
+        console.log('Predictions: ', predictions); //sonuçlar
         if (predictions.length > 0) {
             resultDiv.innerHTML = `Detected ${predictions[0].class}!`;
         } else {
